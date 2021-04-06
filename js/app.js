@@ -62,19 +62,28 @@ function addBtn() {
 * @returns active segment index
 */
 function getActiveSegment() {
-var position=0;
+var activesegment=0;
 btn.style.display="none";
 for (let section of sections) {
+	// get current position
         let pos = section.getBoundingClientRect();
-        position=Math.round(Math.abs(pos.top)/Math.abs(pos.height));
+        //get active segment from the  result of the ratio between height and top.
+        //we get absluote values no need for negative value
+        activesegmen=Math.round(Math.abs(pos.top)/Math.abs(pos.height));
+        //extract all top position <0
         if(pos.top>0){
-        		position=0;
+        		activesegmen=0;
         	}
-        return position;
+        //return active segment
+        return activesegmen;
     }
 }
 /**
-* @description add hyperlink which appear when user flood the page.
+* @description lear our timeout throughout the scroll ,Set a timeout to run after scrolling ends by 5seconds
+*  get current segment by calling getActiveSegment() function
+*  get all sections navigator
+*  remove all active classes from segments and navigation bar in the sametime
+*  make in view segment and navigation bar active
 * @returns nothing just add hyperlink bar
 */
 function setActive() {
