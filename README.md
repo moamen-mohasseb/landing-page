@@ -28,4 +28,7 @@ For specific, detailed instructions, look at the project instructions in the Uda
 ## Add additional sections to your HTML document.
 > Done.
 
+## Make navigation bar disappear while not scrolling.
+> Using setTimeout function every 5 minutes.
 
+## Up button appeare when flooding page
