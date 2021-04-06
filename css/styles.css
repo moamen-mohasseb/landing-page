@@ -226,3 +226,11 @@ section.your-active-class .landing__container::after {
 		           rotate(-360deg);
 	}
 }
+.up__button{
+    display: block;
+   
+     margin: auto;
+  width: 60%;
+  border: 3px solid #73AD21;
+  padding: 10px;
+}

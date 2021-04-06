@@ -17,11 +17,21 @@
  * Define Global Variables
  * 
 */
+// define ul element to search for navbar
 const ulP=document.querySelector("#navbar__list");
+// get sections from page
 const sections= document.querySelectorAll("section");
+//get main position to add button 
+const mainBtn=document.querySelector("main");
+// add button (hyperlink) to return back up the page
+const btn=document.createElement("a");
+/**
+* @description build navigation bar by creating list elements then add hyper
+links to them give them class name and href.
+* @returns nothing just ad navigation bar
+*/
 function addNavBar() {
-for(let sec of sections)
-{
+for(let sec of sections){
     let newli=document.createElement("li");
     let newLink=document.createElement("a");
     newLink.setAttribute("class","menu__link");
@@ -29,41 +39,70 @@ for(let sec of sections)
     newLink.setAttribute("href",`#${sec.id}`);
     newli.appendChild(newLink);
     ulP.appendChild(newli);
+   }
 }
+/**
+* @description add hyperlink which appear when user flood the page.
+* @returns nothing just add hyperlink bar
+*/
+function addBtn() {
+	//add class name , href ,and text to button
+	btn.setAttribute("class","up__button");
+    btn.setAttribute("href",'#section1');
+    btn.textContent="up page";
+    //
+    mainBtn.appendChild(btn);
+    //make button invisable
+    btn.style.display="none";
 }
+/**
+* @description get active segment position by the ratio between
+* height and top. as height for all segment the same and top come from 0 to the end of page
+* we start from position  top =0 then we get the segment from their devision.
+* @returns active segment index
+*/
 function getActiveSegment() {
-var posi=0;
+var position=0;
+btn.style.display="none";
 for (let section of sections) {
         let pos = section.getBoundingClientRect();
-        posi=Math.round(Math.abs(pos.top)/Math.abs(pos.height));
-        if(posi>=sections.length)
-        	{posi=posi-1;}
-        if(pos.top>0)
-        	{posi=0;}
-        return posi;
+        position=Math.round(Math.abs(pos.top)/Math.abs(pos.height));
+        if(pos.top>0){
+        		position=0;
+        	}
+        return position;
+    }
 }
-}
+/**
+* @description add hyperlink which appear when user flood the page.
+* @returns nothing just add hyperlink bar
+*/
 function setActive() {
-	
-	window.addEventListener("scroll", function(){
 	let isScrolling=0;
-	ulP.style.display = "inline";
-		// Clear our timeout throughout the scroll
-	//window.clearTimeout( isScrolling );
-
+	window.addEventListener("scroll", function(){
+	// Clear our timeout throughout the scroll
+	window.clearTimeout( isScrolling );
+    ulP.style.display = "inline";
 	// Set a timeout to run after scrolling ends
 	isScrolling = setTimeout(function() {
-
-		// Run the callback
+		// Run the callback wait for 5 seconds
 		ulP.style.display = "none";
-		},10000);
+		},5000);
+	 //get current segment by calling getActiveSegment() function 
 		let i=getActiveSegment();
+		//if the active segment flood the page
+		if(i===sections.length){
+			btn.style.display="inline";
+			i=i-1;
+		}
+		// get all sections navigator
 		let navLink=ulP.querySelectorAll("a");
-		for(let index=0;index<sections.length;index++)
-   {
-	sections[index].classList.remove("your-active-class");
-	navLink[index].classList.remove("active__link");
-   }
+		// remove all activ styles from segments and navigation bar in the sametime
+		for(let index=0;index<sections.length;index++) {
+			sections[index].classList.remove("your-active-class");
+	        navLink[index].classList.remove("active__link");
+        }
+        //make in view segment and navigation bar active
 		sections[i].classList.add("your-active-class");
 		navLink[i].classList.add("active__link");
 	});
@@ -98,10 +137,12 @@ function setActive() {
 */
 
 // Build menu 
-
+addNavBar();
 // Scroll to section on link click
 
 // Set sections as active
-addNavBar();
-
 setActive();
+
+// add button when user flod of the page
+addBtn();
+
