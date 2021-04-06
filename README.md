@@ -3,7 +3,7 @@
 
 ## Table of Contents
 
-* [Instructions](#Build out your HTML and at least 3 content sections.)
+* [Instructions](#Instructions)Build out your HTML and at least 3 content sections.
 * [Instructions](#Build the navigation menu.)
 * [Instructions](#Add functionality to distinguish the section in view.)
 * [Instructions](#Add the functionality to scroll to sections.)
