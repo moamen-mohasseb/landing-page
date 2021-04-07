@@ -232,3 +232,8 @@ section.your-active-class .landing__container::after {
     color: #000;
     transition: ease 0.3s all;
 }
+.up__button:hover {
+    background: #333;
+    color: #fff;
+    transition: ease 0.3s all;
+}

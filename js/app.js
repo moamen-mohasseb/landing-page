@@ -36,10 +36,12 @@ for(let sec of sections){
     let newLink=document.createElement("a");
     newLink.setAttribute("class","menu__link");
     newLink.textContent=sec.id;
-    newLink.setAttribute("href",`#${sec.id}`);
     newli.appendChild(newLink);
     ulP.appendChild(newli);
-   }
+    newLink.addEventListener("click", ()=>{
+    sec.scrollIntoView({behavior: "smooth"});
+   });
+  }
 }
 /**
 * @description add hyperlink which appear when user flood the page.
@@ -48,7 +50,9 @@ for(let sec of sections){
 function addBtn() {
 	//add class name , href ,and text to button
 	btn.setAttribute("class","up__button");
-    btn.setAttribute("href",'#section1');
+    btn.addEventListener("click", ()=>{
+    sections[0].scrollIntoView({behavior: "smooth"});
+   });
     btn.textContent="up page";
     //
     mainBtn.appendChild(btn);
@@ -62,7 +66,7 @@ function addBtn() {
 * @returns active segment index
 */
 function getActiveSegment() {
-var activesegment=0;
+let activesegment=0;
 btn.style.display="none";
 for (let section of sections) {
 	// get current position
@@ -147,7 +151,6 @@ function setActive() {
 
 // Build menu 
 addNavBar();
-// Scroll to section on link click
 
 // Set sections as active
 setActive();
