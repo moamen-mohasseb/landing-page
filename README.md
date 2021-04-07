@@ -10,11 +10,11 @@ By Moamen Mohasseb
 
 ## Table of Contents
 
-* [Instructions](#Instructions) * Build out your HTML and at least 3 content sections.
-* [Instructions](#Instructions) * Build the navigation menu.
-* [Instructions](#Instructions) * Add functionality to distinguish the section in view.
-* [Instructions](#Instructions) * Add the functionality to scroll to sections.
-* [Instructions](#Instructions) * Add additional sections to your HTML document.
+* Build out your HTML and at least 3 content sections.
+* Build the navigation menu.
+* Add functionality to distinguish the section in view.
+* Add the functionality to scroll to sections.
+* Add additional sections to your HTML document.
 
 
 
